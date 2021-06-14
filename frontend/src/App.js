@@ -11,13 +11,13 @@ function App() {
   const [newData, setNewData] = useState();
   useEffect(() => {
     async function fetchData() {
-      const res = await axios.get("http://localhost:3001/todos");
+      const res = await axios.get("127.0.0.1:3001/todos");
       setTodos(res.data);
     }
     fetchData();
   }, [todos]);
   const handleCreate = async () => {
-    const res = await axios.post("http://localhost:3001/todos", { data: data });
+    const res = await axios.post("127.0.0.1:3001/todos", { data: data });
     alert("新增成功!");
   };
   const handleChange = (e) => {
@@ -25,11 +25,11 @@ function App() {
     setData(value);
   };
   const handleUpdate = async(id) => {
-    const res = await axios.put("http://localhost:3001/todos",{id:id,data:newData})
+    const res = await axios.put("127.0.0.1:3001/todos",{id:id,data:newData})
     alert("修改成功!")
   };
   const handleDelete = async(id) => {
-    const res = await axios.delete("http://localhost:3001/todos",{ data: { id:id }})
+    const res = await axios.delete("127.0.0.1:3001/todos",{ data: { id:id }})
     alert("刪除成功!")
   };
   const handleNewData = (e) => {
